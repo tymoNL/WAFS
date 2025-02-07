@@ -1,0 +1,198 @@
+/*************/
+/* Variables */
+/*************/
+html {
+    --color-white: #f6f0f0;
+    --color-red: #c33b3b;
+    --color-green: #2e8720;
+    --color-brown: #7e4d32;
+    --color-blue: #79b6ce;
+
+    --field-width: 66vmin;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 500px;
+    perspective-origin: 50% 50%;
+}
+
+body {
+    margin: 0;
+    background: #444;
+}
+
+.field {
+    transform-style: preserve-3d;
+    transform: rotate3d(4, 4, 0, 60deg);
+    width: var(--field-width);
+    rotate: -45deg;
+    display: grid;
+    background: var(--color-green);
+
+    aspect-ratio: 1;
+    border-radius: 0 50% 0 10%;
+    border-left: 10px solid var(--color-green);
+    border-bottom: 10px solid var(--color-green);
+    position: relative;
+
+    .infield {
+        width: calc(var(--field-width) / 1.5);
+        display: grid;
+        aspect-ratio: 1;
+        padding: calc(var(--field-width)* 0.075) calc(var(--field-width)* .075) 0 0;
+        background: var(--color-brown);
+        border-radius: 0 25% 0 10%;
+        place-self: end start;
+        grid-template-columns: 15% 1fr 15%;
+        grid-template-rows: 15% 1fr 15%;
+        grid-template-areas:
+            "thirdbase . secondbase"
+            ". grass ."
+            "battingcircle . firstbase";
+
+        .infieldGrass {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--color-green);
+            place-self: center;
+            display: grid;
+            grid-area: grass;
+
+            .pitcherMound {
+                width: 40%;
+                aspect-ratio: 1;
+                background: var(--color-brown);
+                place-self: center;
+                border-radius: 50%;
+                border: 2px solid var(--color-white);
+                display: grid;
+
+                .pitcherPlate {
+                    width: 5%;
+                    aspect-ratio: 1 / 3;
+                    background: var(--color-white);
+                    place-self: center;
+                    rotate: -45deg;
+                }
+            }
+        }
+
+        .battingCircle {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--color-brown);
+            place-self: end start;
+            border-radius: 50%;
+            border: 2px solid var(--color-white);
+            display: grid;
+            grid-area: battingcircle;
+
+            .homeplate {
+                width: 20%;
+                rotate: 45deg;
+                aspect-ratio: 1;
+                background: var(--color-white);
+                place-self: center;
+                clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
+            }
+
+            .baseline {
+                background: var(--color-white);
+                position: absolute;
+
+                &.left {
+                    width: 0.1%;
+                    height: 96%;
+                    top: 0;
+                    left: 3.7%;
+                }
+
+                &.right {
+                    height: 0.1%;
+                    width: 96%;
+                    bottom: 3.7%;
+                    left: 3.6%;
+                }
+            }
+        }
+
+        .firstBase,
+        .secondBase,
+        .thirdBase {
+            background: var(--color-white);
+            width: 20%;
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+            place-self: center;
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                border: 1px solid var(--color-white);
+                border-radius: 50%;
+                position: absolute;
+                aspect-ratio: 1;
+                left: 50%;
+                top: 50%;
+                translate: -50% -50%;
+
+                animation: pulsate 1s ease-out;
+                animation-iteration-count: infinite;
+                opacity: 0.0;
+            }
+
+            .clickArea {
+                display: none;
+                position: absolute;
+                width: 34vw;
+                top: -5rem;
+                rotate: 45deg;
+                height: 10vh;
+                background: var(--color-white);
+                border-radius: 10px;
+
+                &.active {
+                    display: block;
+                }
+            }
+        }
+
+        .firstBase {
+            grid-area: firstbase;
+        }
+
+        .secondBase {
+            grid-area: secondbase;
+        }
+
+        .thirdBase {
+            grid-area: thirdbase;
+        }
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        -webkit-transform: scale(1.0, 1.0);
+        opacity: 0.0;
+    }
+
+    50% {
+        opacity: 1.0;
+    }
+
+    100% {
+        -webkit-transform: scale(3.0, 3.0);
+        opacity: 0.0;
+    }
+}

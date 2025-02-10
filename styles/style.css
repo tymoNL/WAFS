@@ -7,6 +7,7 @@ html {
     --color-green: #2e8720;
     --color-brown: #7e4d32;
     --color-blue: #79b6ce;
+    --color-green-darker: #0c06;
 
     --field-width: 66vmin;
 }
@@ -22,6 +23,11 @@ main {
     height: 100vh;
     perspective: 500px;
     perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+
+    * {
+        transform-style: preserve-3d;
+    }
 }
 
 body {
@@ -30,18 +36,30 @@ body {
 }
 
 .field {
-    transform-style: preserve-3d;
-    transform: rotate3d(4, 4, 0, 60deg);
+    transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
     width: var(--field-width);
-    rotate: -45deg;
     display: grid;
     background: var(--color-green);
-
+    background-image: repeating-linear-gradient(0deg, transparent 0 5%, var(--color-green-darker) 0 10%);
     aspect-ratio: 1;
     border-radius: 0 50% 0 10%;
     border-left: 10px solid var(--color-green);
     border-bottom: 10px solid var(--color-green);
     position: relative;
+
+    /* Codepen van Sanne
+    https://codepen.io/shooft/pen/ogNvMeE 
+    */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(white 0 0), linear-gradient(white 0 0);
+        background-size: 0.1em 96%, 96% .1em;
+        background-repeat: no-repeat;
+        background-position: 3.3% 0%, 100% 96.5%;
+        pointer-events: none;
+    }
 
     .infield {
         width: calc(var(--field-width) / 1.5);
@@ -65,6 +83,7 @@ body {
             place-self: center;
             display: grid;
             grid-area: grass;
+            background-image: repeating-linear-gradient(0deg, transparent 0 10%, var(--color-green-darker) 0 20%);
 
             .pitcherMound {
                 width: 40%;
@@ -103,36 +122,16 @@ body {
                 place-self: center;
                 clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
             }
-
-            .baseline {
-                background: var(--color-white);
-                position: absolute;
-
-                &.left {
-                    width: 0.1%;
-                    height: 96%;
-                    top: 0;
-                    left: 3.7%;
-                }
-
-                &.right {
-                    height: 0.1%;
-                    width: 96%;
-                    bottom: 3.7%;
-                    left: 3.6%;
-                }
-            }
         }
 
-        .firstBase,
-        .secondBase,
-        .thirdBase {
+        .base {
             background: var(--color-white);
             width: 20%;
             aspect-ratio: 1;
             position: relative;
             cursor: pointer;
             place-self: center;
+            z-index: 10;
 
             &::after {
                 content: "";
@@ -156,10 +155,10 @@ body {
                 position: absolute;
                 width: 34vw;
                 top: -5rem;
-                rotate: 45deg;
                 height: 10vh;
                 background: var(--color-white);
                 border-radius: 10px;
+                padding: 0.5rem 1rem;
 
                 &.active {
                     display: block;
@@ -169,14 +168,26 @@ body {
 
         .firstBase {
             grid-area: firstbase;
+
+            .clickArea {
+                transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
+            }
         }
 
         .secondBase {
             grid-area: secondbase;
+
+            .clickArea {
+                transform: translateZ(17.5vw) rotateZ(45deg) rotateX(-90deg);
+            }
         }
 
         .thirdBase {
             grid-area: thirdbase;
+
+            .clickArea {
+                transform: translateZ(11.5vw) rotateZ(15deg) rotateX(-90deg);
+            }
         }
     }
 }

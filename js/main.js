@@ -6,7 +6,7 @@ const myURL = baseURL + endpointMe;
 
 getData(myURL).then(dataTymo => {
     // Pak het h1 element uit de dom
-    let scoreBoardText = document.querySelector(".text");
+    let scoreBoardText = document.querySelector(".nameText");
 
     // Variable zetten met de naam uit data
     let myName = dataTymo.data.name; 
@@ -51,10 +51,10 @@ function EnableClickEvents() {
                 firstBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             case secondBase:
-
+                secondBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             case thirdBase:
-
+                thirdBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             default:
                 return;

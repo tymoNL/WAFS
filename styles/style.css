@@ -47,15 +47,15 @@ body {
     border-left: 10px solid var(--color-green);
     border-bottom: 10px solid var(--color-green);
     position: relative;
-    box-shadow: 
-        rgba(0, 0, 0, 0.25) 0px 54px 55px, 
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, 
-        rgba(0, 0, 0, 0.12) 0px 4px 6px, 
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    box-shadow:
+        rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px,
         rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     /* Codepen van Sanne */
-    /* https://codepen.io/shooft/pen/ogNvMeE */ 
+    /* https://codepen.io/shooft/pen/ogNvMeE */
     &::after {
         content: "";
         position: absolute;
@@ -159,22 +159,29 @@ body {
             .clickArea {
                 display: none;
                 position: absolute;
-                width: 34vw;
+                width: 33vmax;
                 top: -5rem;
                 min-height: 10vh;
                 background: var(--color-white);
                 border-radius: 10px;
                 padding: 0.5rem 1rem;
-                grid-template-columns: 1fr 3fr;
-                align-items: center;
-                grid-gap: 0 1rem;
-                box-shadow: 
-                rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
-                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
-                rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+                box-shadow:
+                    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+                    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+                &.secondBaseClickArea {
+                    grid-template-columns: 1fr 3fr;
+                    align-items: center;
+                    grid-gap: 0 1rem;
+
+                    &.active {
+                        display: grid;
+                    }
+                }
 
                 &.active {
-                    display: grid;
+                    display: block;
                 }
 
                 .avatar {
@@ -187,9 +194,19 @@ body {
                     grid-column: 2;
                     grid-row: 1;
                 }
+
                 .birthdateText {
                     grid-column: 2;
                     grid-row: 2;
+                }
+
+                ul {
+                    padding: 0 1rem;
+                    margin: 0;
+
+                    li {
+                        font-size: 1.5vw;
+                    }
                 }
             }
         }
@@ -217,6 +234,12 @@ body {
                 transform: translateZ(11.5vw) rotateZ(15deg) rotateX(-90deg);
             }
         }
+    }
+}
+
+@media only screen and(min-width: 547px) {
+    .clickArea.secondBaseClickArea {
+        width: 25vmax;
     }
 }
 

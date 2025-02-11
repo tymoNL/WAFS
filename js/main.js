@@ -14,7 +14,7 @@ getData(myURL).then(dataTymo => {
     let myName = dataTymo.data.name;
     let myBirthDate = dataTymo.data.birthdate;
     let website = dataTymo.data.website;
-    
+
     // Favorites variables
     let myColor = dataTymo.data.fav_color;
     let myFood = dataTymo.data.fav_kitchen;
@@ -32,16 +32,16 @@ getData(myURL).then(dataTymo => {
     // Firstbase clickArea
     let colorText = document.querySelector(".firstBaseClickArea .colorText");
     let foodText = document.querySelector(".firstBaseClickArea .foodText");
-    let attributeText =  document.querySelector(".firstBaseClickArea .attributeText");
+    let attributeText = document.querySelector(".firstBaseClickArea .attributeText");
     let bookText = document.querySelector(".firstBaseClickArea .bookText");
     let featureText = document.querySelector(".firstBaseClickArea .featureText");
-    let propertyText =  document.querySelector(".firstBaseClickArea .propertyText");
-    let tagText =  document.querySelector(".firstBaseClickArea .tagText");
-    
+    let propertyText = document.querySelector(".firstBaseClickArea .propertyText");
+    let tagText = document.querySelector(".firstBaseClickArea .tagText");
+
     // Secondbase clickArea
     let nameText = document.querySelector(".secondBaseClickArea .nameText");
     let birthdateText = document.querySelector(".secondBaseClickArea .birthdateText");
-    let image =  document.querySelector(".secondBaseClickArea .avatar");
+    let image = document.querySelector(".secondBaseClickArea .avatar");
 
     // Thirdbase clickArea
     let hobbys = document.querySelector(".secondBaseClickArea .hobbys");
@@ -51,6 +51,14 @@ getData(myURL).then(dataTymo => {
     image.src = dataTymo.data.avatar;
     nameText.textContent = myName;
     birthdateText.textContent = myBirthDate;
+
+    colorText.textContent = myColor;
+    foodText.textContent = myFood;
+    attributeText.textContent = myAttribute;
+    bookText.textContent = myBook;
+    featureText.textContent = myFeature;
+    propertyText.textContent = myProperty;
+    tagText.textContent = myTag;
 });
 
 window.addEventListener("load", (event) => { EnableClickEvents(); });
@@ -84,11 +92,11 @@ function EnableClickEvents() {
     }
 }
 
-// Get Json data
+// Get Json data 
 async function getData(URL) {
     return (
         fetch(URL)
-            .then( response => response.json())
-            .then( jsonData => { return jsonData })
+            .then(response => response.json())
+            .then(jsonData => { return jsonData })
     );
 }

@@ -4,12 +4,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>WAFS Tymo Smids</title>
+    <!-- Google Font (Playball) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/60177191?v=4" />
+    <title>WAFS Tymo Smids</title>
 
-
+    <!-- Style & JS -->
     <link rel="stylesheet" href="styles/style.css" />
-
     <script src="js/main.js"></script>
 </head>
 
@@ -18,17 +23,22 @@
         <div class="field">
             <div class="infield">
                 <div id="thirdBase" class="thirdBase base">
-                    <div class="clickArea"></div>
+                    <div class="clickArea thirdBaseClickArea"></div>
                 </div>
 
                 <div id="secondBase" class="secondBase base">
-                    <div class="clickArea">
-                        <span class="nameText"></span>
+                    <div class="clickArea secondBaseClickArea">
+                        <img src="#" alt="avatar" class="avatar" />
+                        <div class="nameText"></div>
+                        <div class="birthdateText"></div>
                     </div>
                 </div>
 
                 <div id="firstBase" class="firstBase base">
-                    <div class="clickArea"></div>
+                    <div class="clickArea firstBaseClickArea">
+                        <div class="nameText"></div>
+                        <div class="birthdateText"></div>
+                    </div>
                 </div>
 
                 <div class="infieldGrass">
@@ -40,10 +50,9 @@
                 <div class="battingCircle">
                     <div class="homeplate"></div>
                 </div>
+
             </div>
         </div>
     </main>
-
 </body>
-
 </html>

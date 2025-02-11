@@ -14,6 +14,7 @@ html {
 
 * {
     box-sizing: border-box;
+    font-family: "Playball", serif;
 }
 
 main {
@@ -32,7 +33,7 @@ main {
 
 body {
     margin: 0;
-    background: #444;
+    background: radial-gradient(#EE6C45, #FFCE61);
 }
 
 .field {
@@ -46,10 +47,15 @@ body {
     border-left: 10px solid var(--color-green);
     border-bottom: 10px solid var(--color-green);
     position: relative;
+    box-shadow: 
+        rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
-    /* Codepen van Sanne
-    https://codepen.io/shooft/pen/ogNvMeE 
-    */
+    /* Codepen van Sanne */
+    /* https://codepen.io/shooft/pen/ogNvMeE */ 
     &::after {
         content: "";
         position: absolute;
@@ -155,13 +161,35 @@ body {
                 position: absolute;
                 width: 34vw;
                 top: -5rem;
-                height: 10vh;
+                min-height: 10vh;
                 background: var(--color-white);
                 border-radius: 10px;
                 padding: 0.5rem 1rem;
+                grid-template-columns: 1fr 3fr;
+                align-items: center;
+                grid-gap: 0 1rem;
+                box-shadow: 
+                rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+                rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
                 &.active {
-                    display: block;
+                    display: grid;
+                }
+
+                .avatar {
+                    grid-column: 1;
+                    grid-row: 1 / span 2;
+                    width: 100%;
+                }
+
+                .nameText {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+                .birthdateText {
+                    grid-column: 2;
+                    grid-row: 2;
                 }
             }
         }

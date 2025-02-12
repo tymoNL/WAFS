@@ -12,6 +12,7 @@ html {
     --field-width: 66vmin;
 }
 
+/* All elements */
 * {
     box-sizing: border-box;
     font-family: "Playball", serif;
@@ -26,9 +27,7 @@ main {
     perspective-origin: 50% 50%;
     transform-style: preserve-3d;
 
-    * {
-        transform-style: preserve-3d;
-    }
+    * { transform-style: preserve-3d; }
 }
 
 body {
@@ -54,8 +53,9 @@ body {
         rgba(0, 0, 0, 0.17) 0px 12px 13px,
         rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
-    /* Codepen van Sanne */
-    /* https://codepen.io/shooft/pen/ogNvMeE */
+    /* Codepen van Sanne
+    https://codepen.io/shooft/pen/ogNvMeE
+    */
     &::after {
         content: "";
         position: absolute;
@@ -130,6 +130,7 @@ body {
             }
         }
 
+        /* All bases */
         .base {
             background: var(--color-white);
             width: 20%;
@@ -178,10 +179,11 @@ body {
                     align-items: center;
                     grid-gap: 0 1rem;
 
-                    &.active {
-                        display: grid;
-                    }
+                    &.active { display: grid; }
 
+                    /* Reduced motion bron: 
+                        https://www.smashingmagazine.com/2021/10/respecting-users-motion-preferences/
+                    */
                     @media (prefers-reduced-motion: reduce) {
                         animation: none;
                         animation-iteration-count: unset;
@@ -190,33 +192,13 @@ body {
                     }
                 }
 
-                &.active {
-                    display: block;
-                }
-
-                .avatar {
-                    grid-column: 1;
-                    grid-row: 1 / span 2;
-                    width: 100%;
-                }
-
-                .nameText {
-                    grid-column: 2;
-                    grid-row: 1;
-                }
-
-                .birthdateText {
-                    grid-column: 2;
-                    grid-row: 2;
-                }
+                &.active { display: block; }
 
                 ul {
                     padding: 0 1rem;
                     margin: 0;
 
-                    li {
-                        font-size: 1.5vw;
-                    }
+                    li { font-size: 1.5vw; }
                 }
             }
         }
@@ -236,6 +218,22 @@ body {
             .clickArea {
                 transform: translateZ(7.5vw) rotateZ(45deg) rotateX(-90deg);
                 animation-name: SecondBaseBlockHover;
+
+                .avatar {
+                    grid-column: 1;
+                    grid-row: 1 / span 2;
+                    width: 100%;
+                }
+
+                .nameText {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+
+                .birthdateText {
+                    grid-column: 2;
+                    grid-row: 2;
+                }
             }
         }
 
@@ -250,21 +248,18 @@ body {
     }
 }
 
-@media only screen and(min-width: 547px) {
-    .clickArea.secondBaseClickArea {
-        width: 25vmax;
-    }
-}
+/********************/
+/**** Animations ****/
+/********************/
 
+/* Base pulse */
 @keyframes pulsate {
     0% {
         -webkit-transform: scale(1.0, 1.0);
         opacity: 0.0;
     }
 
-    50% {
-        opacity: 1.0;
-    }
+    50% { opacity: 1.0; }
 
     100% {
         -webkit-transform: scale(3.0, 3.0);
@@ -272,32 +267,18 @@ body {
     }
 }
 
+/* Clicked element hover */
 @keyframes FirstBaseBlockHover {
-    from {
-        transform: translateZ(7.5vw) rotateZ(60deg) rotateX(-90deg);
-    }
-
-    to {
-        transform: translateZ(10vw) rotateZ(60deg) rotateX(-90deg);
-    }
+    from { transform: translateZ(7.5vw) rotateZ(60deg) rotateX(-90deg); }
+    to { transform: translateZ(10vw) rotateZ(60deg) rotateX(-90deg); }
 }
 
 @keyframes SecondBaseBlockHover {
-    from {
-        transform: translateZ(7.5vw) rotateZ(45deg) rotateX(-90deg);
-    }
-
-    to {
-        transform: translateZ(10vw) rotateZ(45deg) rotateX(-90deg);
-    }
+    from { transform: translateZ(7.5vw) rotateZ(45deg) rotateX(-90deg); }
+    to { transform: translateZ(10vw) rotateZ(45deg) rotateX(-90deg); }
 }
 
 @keyframes ThirdBaseBlockHover {
-    from {
-        transform: translateZ(7.5vw) rotateZ(15deg) rotateX(-90deg);
-    }
-
-    to {
-        transform: translateZ(10vw) rotateZ(15deg) rotateX(-90deg);
-    }
+    from { transform: translateZ(7.5vw) rotateZ(15deg) rotateX(-90deg); }
+    to { transform: translateZ(10vw) rotateZ(15deg) rotateX(-90deg); }
 }

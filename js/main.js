@@ -1,12 +1,12 @@
 const baseURL = 'https://fdnd.directus.app/';
 const endpointMe = 'items/person/225';
 
-// De basis url + de specef ieke persoon
+// De basis url + de specefieke persoon
 const myURL = baseURL + endpointMe;
 
 getData(myURL).then(dataTymo => {
-    //--- Variable zetten uit Json data ---\\
-    // Info variables
+    //--- Variable zetten, uit Json data ---\\
+    // Persoons info variables
     let jsonData = dataTymo.data.custom;
     let customData = JSON.parse(jsonData);
 
@@ -25,18 +25,9 @@ getData(myURL).then(dataTymo => {
     let myProperty = dataTymo.data.fav_property;
     let myTag = dataTymo.data.fav_tag;
 
+    // Leerdoelen variables (array)
     let myLeerdoelen = dataTymo.data.custom.Title;
     //-------------------------------------\\
-
-    let leerdoelenText = document.querySelector(".thirdBaseClickArea .leerdoelen");
-
-    customData.Title.forEach(leerdoel => {
-        let leerdoelHTML = `<li>${leerdoel}</li>`;
-
-        leerdoelenText.insertAdjacentHTML('beforeend', leerdoelHTML);
-    });
-
-
 
     //--- Pak elementen uit de DOM ---\\
     // Firstbase clickArea
@@ -52,15 +43,25 @@ getData(myURL).then(dataTymo => {
     let nameText = document.querySelector(".secondBaseClickArea .nameText");
     let birthdateText = document.querySelector(".secondBaseClickArea .birthdateText");
     let image = document.querySelector(".secondBaseClickArea .avatar");
+
+    // Thirdbase clickArea
+    let leerdoelenText = document.querySelector(".thirdBaseClickArea .leerdoelen");
     //--------------------------------\\
 
-    // Verander de elementen met de Json data
-    // Second base items
+    //--- Verander de elementen met de Json data ---\\
+    // Thirdbase items
+    customData.Title.forEach(leerdoel => {
+        let leerdoelHTML = `<li>${leerdoel}</li>`;
+
+        leerdoelenText.insertAdjacentHTML('beforeend', leerdoelHTML);
+    });
+
+    // Secondbase items
     image.src = dataTymo.data.avatar;
     nameText.textContent = myName;
     birthdateText.textContent = myBirthDate;
 
-    // First base items
+    // Firstbase items
     colorText.textContent = myColor;
     foodText.textContent = myFood;
     attributeText.textContent = myAttribute;
@@ -68,6 +69,7 @@ getData(myURL).then(dataTymo => {
     featureText.textContent = myFeature;
     propertyText.textContent = myProperty;
     tagText.textContent = myTag;
+    //----------------------------------------------\\
 });
 
 window.addEventListener("load", (event) => { EnableClickEvents(); });

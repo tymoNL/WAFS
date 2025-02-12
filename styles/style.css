@@ -225,7 +225,7 @@ body {
             grid-area: firstbase;
 
             .clickArea {
-                transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
+                transform: translateZ(10vw) rotateZ(60deg) rotateX(-90deg);
                 animation-name: FirstBaseBlockHover;
             }
         }
@@ -234,7 +234,7 @@ body {
             grid-area: secondbase;
 
             .clickArea {
-                transform: translateZ(12.5vw) rotateZ(45deg) rotateX(-90deg);
+                transform: translateZ(10vw) rotateZ(45deg) rotateX(-90deg);
                 animation-name: SecondBaseBlockHover;
             }
         }
@@ -243,7 +243,7 @@ body {
             grid-area: thirdbase;
 
             .clickArea {
-                transform: translateZ(12.5vw) rotateZ(15deg) rotateX(-90deg);
+                transform: translateZ(10vw) rotateZ(15deg) rotateX(-90deg);
                 animation-name: ThirdBaseBlockHover;
             }
         }
@@ -274,30 +274,30 @@ body {
 
 @keyframes FirstBaseBlockHover {
     from {
-        transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
+        transform: translateZ(10vw) rotateZ(60deg) rotateX(-90deg);
     }
 
     to {
-        transform: translateZ(17.5vw) rotateZ(60deg) rotateX(-90deg);
+        transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
     }
 }
 
 @keyframes SecondBaseBlockHover {
     from {
-        transform: translateZ(12.5vw) rotateZ(45deg) rotateX(-90deg);
+        transform: translateZ(10vw) rotateZ(45deg) rotateX(-90deg);
     }
 
     to {
-        transform: translateZ(17.5vw) rotateZ(45deg) rotateX(-90deg);
+        transform: translateZ(12.5vw) rotateZ(45deg) rotateX(-90deg);
     }
 }
 
 @keyframes ThirdBaseBlockHover {
     from {
-        transform: translateZ(12.5vw) rotateZ(15deg) rotateX(-90deg);
+        transform: translateZ(10vw) rotateZ(15deg) rotateX(-90deg);
     }
 
     to {
-        transform: translateZ(17.5vw) rotateZ(15deg) rotateX(-90deg);
+        transform: translateZ(12.5vw) rotateZ(15deg) rotateX(-90deg);
     }
 }

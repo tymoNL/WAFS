@@ -52,15 +52,9 @@ getData(myURL).then(dataTymo => {
     let nameText = document.querySelector(".secondBaseClickArea .nameText");
     let birthdateText = document.querySelector(".secondBaseClickArea .birthdateText");
     let image = document.querySelector(".secondBaseClickArea .avatar");
-
-    // Thirdbase clickArea
-    
     //--------------------------------\\
 
     // Verander de elementen met de Json data
-    // Thirdbase items
-
-
     // Second base items
     image.src = dataTymo.data.avatar;
     nameText.textContent = myName;

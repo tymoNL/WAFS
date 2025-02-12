@@ -160,11 +160,14 @@ body {
                 display: none;
                 position: absolute;
                 width: 33vmax;
-                top: -5rem;
+                top: -10em;
                 min-height: 10vh;
                 background: var(--color-white);
                 border-radius: 10px;
                 padding: 0.5rem 1rem;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                animation-duration: 4s;
                 box-shadow:
                     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
                     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -177,6 +180,13 @@ body {
 
                     &.active {
                         display: grid;
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        animation: none;
+                        animation-iteration-count: unset;
+                        animation-direction: unset;
+                        animation-duration: unset;
                     }
                 }
 
@@ -216,6 +226,7 @@ body {
 
             .clickArea {
                 transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
+                animation-name: FirstBaseBlockHover;
             }
         }
 
@@ -223,7 +234,8 @@ body {
             grid-area: secondbase;
 
             .clickArea {
-                transform: translateZ(17.5vw) rotateZ(45deg) rotateX(-90deg);
+                transform: translateZ(12.5vw) rotateZ(45deg) rotateX(-90deg);
+                animation-name: SecondBaseBlockHover;
             }
         }
 
@@ -231,7 +243,8 @@ body {
             grid-area: thirdbase;
 
             .clickArea {
-                transform: translateZ(11.5vw) rotateZ(15deg) rotateX(-90deg);
+                transform: translateZ(12.5vw) rotateZ(15deg) rotateX(-90deg);
+                animation-name: ThirdBaseBlockHover;
             }
         }
     }
@@ -256,5 +269,35 @@ body {
     100% {
         -webkit-transform: scale(3.0, 3.0);
         opacity: 0.0;
+    }
+}
+
+@keyframes FirstBaseBlockHover {
+    from {
+        transform: translateZ(12.5vw) rotateZ(60deg) rotateX(-90deg);
+    }
+
+    to {
+        transform: translateZ(17.5vw) rotateZ(60deg) rotateX(-90deg);
+    }
+}
+
+@keyframes SecondBaseBlockHover {
+    from {
+        transform: translateZ(12.5vw) rotateZ(45deg) rotateX(-90deg);
+    }
+
+    to {
+        transform: translateZ(17.5vw) rotateZ(45deg) rotateX(-90deg);
+    }
+}
+
+@keyframes ThirdBaseBlockHover {
+    from {
+        transform: translateZ(12.5vw) rotateZ(15deg) rotateX(-90deg);
+    }
+
+    to {
+        transform: translateZ(17.5vw) rotateZ(15deg) rotateX(-90deg);
     }
 }

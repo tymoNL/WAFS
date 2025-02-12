@@ -1,7 +1,7 @@
 const baseURL = 'https://fdnd.directus.app/';
 const endpointMe = 'items/person/225';
 
-// De basis url + de specefieke persoon
+// De basis url + de specef ieke persoon
 const myURL = baseURL + endpointMe;
 
 getData(myURL).then(dataTymo => {
@@ -9,6 +9,7 @@ getData(myURL).then(dataTymo => {
     // Info variables
     let jsonData = dataTymo.data.custom;
     let customData = JSON.parse(jsonData);
+
     let myAvatar = dataTymo.data.avatar;
     let myBio = dataTymo.data.bio;
     let myName = dataTymo.data.name;
@@ -23,10 +24,19 @@ getData(myURL).then(dataTymo => {
     let myFeature = dataTymo.data.fav_feature;
     let myProperty = dataTymo.data.fav_property;
     let myTag = dataTymo.data.fav_tag;
+
+    let myLeerdoelen = dataTymo.data.custom.Title;
     //-------------------------------------\\
 
-    console.log("data: ", dataTymo.data);
-    console.log("customdata: ", customData);
+    let leerdoelenText = document.querySelector(".thirdBaseClickArea .leerdoelen");
+
+    customData.Title.forEach(leerdoel => {
+        let leerdoelHTML = `<li>${leerdoel}</li>`;
+
+        leerdoelenText.insertAdjacentHTML('beforeend', leerdoelHTML);
+    });
+
+
 
     //--- Pak elementen uit de DOM ---\\
     // Firstbase clickArea
@@ -44,14 +54,19 @@ getData(myURL).then(dataTymo => {
     let image = document.querySelector(".secondBaseClickArea .avatar");
 
     // Thirdbase clickArea
-    let hobbys = document.querySelector(".secondBaseClickArea .hobbys");
+    
     //--------------------------------\\
 
     // Verander de elementen met de Json data
+    // Thirdbase items
+
+
+    // Second base items
     image.src = dataTymo.data.avatar;
     nameText.textContent = myName;
     birthdateText.textContent = myBirthDate;
 
+    // First base items
     colorText.textContent = myColor;
     foodText.textContent = myFood;
     attributeText.textContent = myAttribute;
@@ -63,6 +78,7 @@ getData(myURL).then(dataTymo => {
 
 window.addEventListener("load", (event) => { EnableClickEvents(); });
 
+// Click on bases function
 function EnableClickEvents() {
     // Set all clickable elements
     var firstBase = document.getElementById("firstBase");
@@ -72,17 +88,24 @@ function EnableClickEvents() {
     window.onclick = e => {
         var clickedElement = e.target;
 
-        // console.log(clickedElement);
-
         // Check if clicked element is clickable element
         switch (clickedElement) {
             case firstBase:
+                secondBase.querySelector(".clickArea").classList.remove("active");
+                thirdBase.querySelector(".clickArea").classList.remove("active");
+
                 firstBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             case secondBase:
+                firstBase.querySelector(".clickArea").classList.remove("active");
+                thirdBase.querySelector(".clickArea").classList.remove("active");
+
                 secondBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             case thirdBase:
+                firstBase.querySelector(".clickArea").classList.remove("active");
+                secondBase.querySelector(".clickArea").classList.remove("active");
+
                 thirdBase.querySelector(".clickArea").classList.toggle("active");
                 break;
             default:
